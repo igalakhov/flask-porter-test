@@ -31,15 +31,15 @@ jobs:
       id: docker_build_push
       run: |2
 
-        export $(echo "${{secrets.ENV_WORK}}" | xargs)
-        echo "${{secrets.ENV_WORK}}" > ./env_porter
+        export $(echo "${{secrets.ENV_WEB}}" | xargs)
+        echo "${{secrets.ENV_WEB}}" > ./env_porter
         sudo add-apt-repository ppa:cncf-buildpacks/pack-cli
         sudo apt-get update
         sudo apt-get install pack-cli
-        sudo pack build gcr.io/kube-hard-way-316316/work-default:$(git rev-parse --short HEAD) --path ./ --builder heroku/buildpacks:18 --env-file ./env_porter
-        sudo docker push gcr.io/kube-hard-way-316316/work-default:$(git rev-parse --short HEAD)
+        sudo pack build registry.digitalocean.com/porter-registry/web-default:$(git rev-parse --short HEAD) --path ./ --builder heroku/buildpacks:18 --env-file ./env_porter
+        sudo docker push registry.digitalocean.com/porter-registry/web-default:$(git rev-parse --short HEAD)
     - name: Deploy on Porter
       id: deploy_porter
       run: |2
 
-        curl -X POST "https://dashboard.getporter.dev/api/webhooks/deploy/${{secrets.WEBHOOK_WORK}}?commit=$(git rev-parse --short HEAD)"
+        curl -X POST "https://dashboard.getporter.dev/api/webhooks/deploy/${{secrets.WEBHOOK_WEB}}?commit=$(git rev-parse --short HEAD)"
