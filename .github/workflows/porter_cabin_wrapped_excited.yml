@@ -23,11 +23,4 @@ jobs:
       id: configure_porter
       timeout-minutes: 10
       run: |
-        PORTER_PROJECT=10
-        PORTER_CLUSTER=8
-        porter config set-host https://dashboard.dev.getporter.dev
-        porter auth login --token ${{secrets.PORTER_TOKEN_10}}
-        porter projects list
-        porter clusters list
-        porter cluster namespace list
-        porter update --app cabin-wrapped-excited
+        porter update --host https://dashboard.dev.getporter.dev --project 10 --cluster ${{secrets.PORTER_CLUSTER_ID_10}} --app cabin-wrapped-excited 
