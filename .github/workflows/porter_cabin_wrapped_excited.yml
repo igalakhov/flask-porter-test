@@ -24,7 +24,8 @@ jobs:
       timeout-minutes: 10
       run: |
         sudo porter config set-host https://dashboard.dev.getporter.dev
-        porter update --app cabin-wrapped-excited
+        sudo porter auth login --token ${{secrets.PORTER_TOKEN_10}}
+        sudo porter update --app cabin-wrapped-excited
       env:
         PORTER_TOKEN: '{{ secrets.PORTER_TOKEN_10 }}'
         PORTER_PROJECT: '{{ secrets.PORTER_PROJECT_ID_10 }}'
