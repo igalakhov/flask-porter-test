@@ -28,5 +28,5 @@ jobs:
         sudo porter update --app cabin-wrapped-excited
       env:
         PORTER_TOKEN: '${{ secrets.PORTER_TOKEN_10 }}'
-        PORTER_PROJECT: '${{ secrets.PORTER_PROJECT_ID_10 }}'
-        PORTER_CLUSTER: '${{ secrets.PORTER_CLUSTER_ID_10 }}'
+        PORTER_PROJECT: 10
+        PORTER_CLUSTER: 8
