@@ -23,4 +23,4 @@ jobs:
       id: configure_porter
       timeout-minutes: 10
       run: |
-        porter update --host https://dashboard.dev.getporter.dev --project 10 --cluster ${{secrets.PORTER_CLUSTER_ID_10}} --app cabin-wrapped-excited 
+        porter update --host https://dashboard.dev.getporter.dev --token ${{secrets.PORTER_TOKEN_10}} --project 10 --cluster ${{secrets.PORTER_CLUSTER_ID_10}} --app cabin-wrapped-excited 
