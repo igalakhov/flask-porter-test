@@ -25,6 +25,11 @@ jobs:
       run: |
         sudo porter config set-host https://dashboard.dev.getporter.dev
         sudo porter auth login --token ${{secrets.PORTER_TOKEN_10}}
+        sudo porter projects list
+        sudo porter config set-project 10
+        sudo porter clusters list
+        sudo porter config set-cluster 8
+        sudo porter cluster namespace list
         sudo porter update --app cabin-wrapped-excited
       env:
         PORTER_TOKEN: ${{ secrets.PORTER_TOKEN_10 }}
