@@ -18,3 +18,4 @@ jobs:
         host: https://dashboard.getporter.dev
         project: "1520"
         token: ${{ secrets.PORTER_TOKEN_1520 }}
+        tag: ${{ steps.vars.outputs.sha_short }}
